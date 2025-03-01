@@ -1,3 +1,5 @@
+
+//check if the content is loaded at first
 document.addEventListener('DOMContentLoaded', () => {
     const display = document.getElementById("display");
     let currentNum = '';
@@ -5,12 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let secNum = '';
     let operation = '';
 
+//select the boxes containing operations and numbers containing nums and iterate 
     const boxes = document.querySelectorAll('.box, .nums');
     boxes.forEach(box => {
         box.addEventListener("click", () => {
+            //anytime these are clicked make sure to get the data value
             const value = box.getAttribute("data-value");
             console.log("Button clicked:", value); // Debugging
-
+//if the value of data value is CE you have to clear everything so reset everything 
             if (value === "ce") {
                 // Clear everything
                 currentNum = '';
@@ -18,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 operation = '';
                 secNum = '';
                 display.textContent = 0;
+//if the value is v (depicting √) then make sure to be able to handle the square root and change the current values
             } else if (value === "v") {
                 // Handle square root
                 if (currentNum) {
